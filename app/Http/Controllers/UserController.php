@@ -78,4 +78,23 @@ class UserController extends Controller
         $data = $this->schedule->all();
         return view('Schedule.list', compact('data'));
     }
+
+    public function profile()
+    {
+        $data = $this->user->find(Auth::user()->id);
+        return view('account', compact('data'));
+    }
+
+    public function edit(Request $request)
+    {
+        $data = $this->user->find(Auth::user()->id);
+        $data->name = $request->name;
+        $data->phone_number = $request->phone_number;
+        $data->save();
+        if (Auth::user()->rule == 0) {
+            return redirect('/user/profile')->with('edit', 'Chỉnh sửa thông tin thành công');
+        } elseif (Auth::user()->rule == 1) {
+            return redirect('/admin/profile')->with('edit', 'Chỉnh sửa thông tin thành công');
+        }
+    }
 }

@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <title>Đăng ký tài khoản</title>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -29,11 +29,36 @@
                             <a href="index-2.html"><img src="assets/img/logo-dark.png" alt=""></a>
                         </div>
                         <div class="form-group">
-                            <label>Tên tài khoản<span style="color: red">*</span></label>
+                            <label>Họ và tên<span style="color: red">*</span></label>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                             <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại<span style="color: red">*</span></label>
+                            @error('phone_number')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <input type="text" class="form-control" name="phone_number">
+                        </div>
+                        <div class="form-group">
+                            <label class="display-block">Giới tính:<span style="color: red">*</span></label>
+                            @error('sex')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sex" id="gender_male" value="nam">
+                                <label class="form-check-label" for="gender_male">Nam</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sex" id="gender_female" value="nữ">
+                                <label class="form-check-label" for="gender_female">Nữ</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Ngày sinh</label>
+                            <input type="date" class="form-control" name="dob">
                         </div>
                         <div class="form-group">
                             <label>Email<span style="color: red">*</span></label>

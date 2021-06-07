@@ -24,8 +24,7 @@ class RegisterScheduleRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone_number' =>'required|max:10|min:10',
-            'sex' =>'required',
+
             'service_id' =>'required',
             'date' =>'required',
             'time_id' =>'required',
@@ -34,8 +33,7 @@ class RegisterScheduleRequest extends FormRequest
     public function messages()
     {
         return [
-            'phone_number.required' =>'Bạn chưa điền thông tin',
-            'sex.required' =>'Bạn chưa điền thông tin',
+           
             'service_id.required' =>'Bạn chưa điền thông tin',
             'date.required'=>'Bạn chưa điền thông tin',
             'time_id.required'=>'Bạn chưa điền thông tin',

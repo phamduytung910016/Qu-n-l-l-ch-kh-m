@@ -30,10 +30,6 @@ class ScheduleController extends Controller
     {
         $data = $this->schedule;
         $data->user_id = Auth::user()->id;
-        $data->dob = $request->dob;
-        $data->email = Auth::user()->email;
-        $data->phone_number = $request->phone_number;
-        $data->sex = $request->sex;
         $data->home_address = $request->home_address;
         $data->service_id = $request->service_id;
         $data->room_patients = $request->room_patients;

@@ -33,7 +33,9 @@ Route::middleware('LoginMiddle')->group(function () {
         Route::get('/', [UserController::class, 'index']);
         Route::get('/getLogOut', [UserController::class, 'logOut']);
         Route::get('/appointments', [UserController::class, 'listAppointments'])->name('list_appointments');
-        Route::get('/getDetail/{id}', [ScheduleController::class,'getDetail']);
+        Route::get('/getDetail/{id}', [ScheduleController::class, 'getDetail']);
+        Route::get('/profile', [UserController::class, 'profile']);
+        Route::get('/edit', [UserController::class, 'edit']);
     });
 
     Route::prefix('user')->group(function () {
@@ -42,7 +44,9 @@ Route::middleware('LoginMiddle')->group(function () {
         Route::post('/post_register_schedule', [ScheduleController::class, 'postRegisterSchedule']);
         Route::get('/detail', [ScheduleController::class, 'detail']);
         Route::get('/listAppointments', [ScheduleController::class, 'list']);
-        Route::get('/getDetail/{id}', [ScheduleController::class,'getDetail']);
+        Route::get('/getDetail/{id}', [ScheduleController::class, 'getDetail']);
+        Route::get('/profile', [UserController::class, 'profile']);
+        Route::post('/edit', [UserController::class, 'edit']);
     });
 });
 

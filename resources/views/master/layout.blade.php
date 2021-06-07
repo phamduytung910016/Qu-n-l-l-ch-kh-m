@@ -43,17 +43,25 @@
                             <span>{{ Auth::user()->name }}</span>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/admin/getLogOut">Logout</a>
+                            @if (Auth::user()->rule == 0)
+                                <a class="dropdown-item" href="/user/profile">Thông tin tài
+                                    khoản</a>
+                            @elseif (Auth::user()->rule == 1)
+                                <a class="dropdown-item" href="/admin/profile">Thông tin tài
+                                    khoản</a>
+                            @endif
+                            <a class="dropdown-item" href="edit-profile.html">Đổi mật khẩu</a>
+                            <a class="dropdown-item" href="settings.html">Cài đặt</a>
+                            <a class="dropdown-item" href="/admin/getLogOut">Đăng xuất</a>
                         </div>
                     </li>
                 @endif
             </ul>
             <div class="dropdown mobile-user-menu float-right">
-
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
                         class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="">Logout</a>
+
                 </div>
             </div>
         </div>
@@ -248,9 +256,14 @@
                         <ul>
                             <li class="menu-title">Main</li>
                             <li>
+                                <a href="/user/get_register_schedule"><i class="fa fa-calendar-check-o"></i>
+                                    <span>Đặt lịch khám</span></a>
+                            </li>
+                            <li>
                                 <a href="/user/listAppointments"><i class="fa fa-calendar"></i>
                                     <span>Lịch sử đăng ký</span></a>
                             </li>
+
                         </ul>
                     </div>
                 </div>

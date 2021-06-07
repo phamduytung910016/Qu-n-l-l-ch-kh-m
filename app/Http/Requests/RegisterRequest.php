@@ -27,20 +27,26 @@ class RegisterRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
             'password' => 'required',
-            'confirm_password' => 'required|same:password'
+            'confirm_password' => 'required|same:password',
+            'phone_number' => 'required|max:10|min:10',
+            'sex' => 'required',
         ];
     }
 
     public function messages()
     {
-        return[
-            'name.required' =>'Bạn chưa nhập họ tên',
-            'email.required' =>'Bạn chưa nhập email',
-            'email.unique' =>'Email đã sử dụng',
-            'email.email' =>'Email chưa đúng định dạng',
-            'password.required' =>'Bạn chưa nhập mật khẩu',
-            'confirm_password.required' =>'Bạn chưa nhập lại mật khẩu',
-            'confirm_password.same' =>'Mật khẩu không khớp',
+        return [
+            'name.required' => 'Bạn chưa nhập họ tên',
+            'email.required' => 'Bạn chưa nhập email',
+            'email.unique' => 'Email đã sử dụng',
+            'email.email' => 'Email chưa đúng định dạng',
+            'password.required' => 'Bạn chưa nhập mật khẩu',
+            'confirm_password.required' => 'Bạn chưa nhập lại mật khẩu',
+            'confirm_password.same' => 'Mật khẩu không khớp',
+            'phone_number.required' => 'Bạn chưa điền thông tin',
+            'phone_number.min:10' => 'Số điện thoại không hợp lệ',
+            'phone_number.max:10' => 'Số điện thoại không hợp lệ',
+            'sex.required' => 'Bạn chưa điền thông tin',
         ];
     }
 }

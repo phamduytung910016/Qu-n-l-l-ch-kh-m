@@ -64,7 +64,7 @@
 
                         </div>
                         <div class="text-center register-link" style="font-size: 20px; color:#009efb">
-                            <span>Số điện thoại CSKH:0203361XXXX</span>
+                            <span>Số điện thoại CSKH:0912345xxx</span>
 
                         </div>
 

@@ -9,7 +9,7 @@ class ScheduleModel extends Model
 {
     use HasFactory;
     protected $table = "schedule";
-    protected $fillable = ['user_id','dob','email','phone_number','sex','home_address','service_id','room_patients','reason','date','time_id'];
+    protected $fillable = ['user_id','home_address','service_id','room_patients','reason','date','time_id'];
     public function time(){
         return $this->belongsTo(TimeScheduleModel::class,'time_id');
     }

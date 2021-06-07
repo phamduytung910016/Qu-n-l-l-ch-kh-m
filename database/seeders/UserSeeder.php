@@ -20,7 +20,9 @@ class UserSeeder extends Seeder
              'email' => 'admin@gmail.com',
              'password' =>bcrypt('123456789'),
              'confirm_password' => bcrypt('123456789'),
-             'rule' => 1
+             'rule' => 1,
+             'phone_number'=>'0522883269',
+             'sex' => 'nam'
             ]
         ]);
     }
