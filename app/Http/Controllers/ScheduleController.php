@@ -9,17 +9,20 @@ use App\Models\ScheduleModel;
 use App\Notifications\SendMail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterScheduleRequest;
+use App\Models\TimeScheduleModel;
 
 class ScheduleController extends Controller
 {
     private $schedule;
     private $service;
     private $user;
-    public function __construct(ScheduleModel $schedule, ServiceModel $service, User $user)
+    private $time;
+    public function __construct(ScheduleModel $schedule, ServiceModel $service, User $user, TimeScheduleModel $time)
     {
         $this->schedule = $schedule;
         $this->service = $service;
         $this->user = $user;
+        $this->time = $time;
     }
     public function getRegisterSchedule()
     {
@@ -52,16 +55,25 @@ class ScheduleController extends Controller
         return back()->with('null', 'Bạn không có lịch khám nào');
     }
 
-    public function list(){
+    public function list()
+    {
         $userSchedules  = $this->schedule->where('user_id', Auth::user()->id)->latest()->get();
-        return view('Schedule.list',compact('userSchedules'));
+        return view('Schedule.list', compact('userSchedules'));
     }
 
     public function getDetail($id)
     {
+        $rs['data'] = $this->schedule->find($id);
+        $rs['service'] = $this->service->all();
+        $rs['time'] = $this->time->all();
+        return view('Schedule.edit', $rs);
+    }
+
+    public function postEdit( $id, Request $request)
+    {
         $data = $this->schedule->find($id);
         // dd($data);
-        return view('Schedule.detail_schedual', compact('data'));
-
+        $data->update($request->all());
+        return redirect('/admin/appointments')->with('update', 'Chỉnh sửa thành công');
     }
 }

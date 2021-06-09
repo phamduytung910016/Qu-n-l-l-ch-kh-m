@@ -6,8 +6,13 @@
                 <div class="col-sm-4 col-3">
                     <h4 class="page-title">Lịch khám bệnh</h4>
                 </div>
-
             </div>
+            @if (session('update'))
+                <div class="alert alert-success alert-dismissible" style="width:50%;align-item:center">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{ session('update') }}</strong>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -27,7 +32,8 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
-                                            <td><a href="/admin/getDetail/{{$item->id}}">{{ $item->user->name }}</a></td>
+                                            <td><a href="/admin/getDetail/{{ $item->id }}">{{ $item->user->name }}</a>
+                                            </td>
                                             <td>{{ $item->sex }}</td>
                                             <td>{{ $item->phone_number }}</td>
                                             <td>{{ $item->email }}</td>
@@ -49,7 +55,9 @@
                                 <tbody>
                                     @foreach ($userSchedules as $item)
                                         <tr>
-                                            <td><a href="/user/getDetail/{{$item->id}}">{{ $item->service->name }}</a></td>
+                                            <td><a
+                                                    href="/user/getDetail/{{ $item->id }}">{{ $item->service->name }}</a>
+                                            </td>
                                             <td>{{ $item->date }}</td>
                                             <td>{{ $item->time->time_schedule }}</td>
                                             <td>{{ $item->reason }}</td>

@@ -85,7 +85,7 @@ class UserController extends Controller
         return view('account', compact('data'));
     }
 
-    public function edit(Request $request)
+    public function editAccount(Request $request)
     {
         $data = $this->user->find(Auth::user()->id);
         $data->name = $request->name;
